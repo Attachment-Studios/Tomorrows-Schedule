@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+:root {
+	--c1: #22272e;
+	--c2: #adbac7;
+	--c3: #2d333b;
+}
+
+* {
+	font-family: 'Ubuntu Mono', monospace;
+	background: var(--c1);
+	color: var(--c2);
+	user-select: none;
+	font-size: 24px;
+}
+
+div {
+	background: transparent;
+}
+
+.card-collection {
+	border: 5px solid var(--c2);
+	border-radius: 20px;
+	padding: 20px;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	background: transparent;
+}
+
+h1 {
+	font-size: 96px;
+}
+
+h2 {
+	font-size: 64px;
+}
+
+h3 {
+	font-size: 48px;
+}
+
+.card {
+	outline: none;
+	border: 5px solid var(--c2);
+	border-radius: 20px;
+	padding: 20px;
+	background: var(--c1);
+	margin-top: 20px;
+	transition: 0.15s;
+}
+
+.card:hover {
+	background: var(--c3);
+	transition: 0.15s;
+}
+
+button, textarea {
+	outline: none;
+	border: 5px solid var(--c2);
+	border-radius: 20px;
+	padding: 10px;
+	background: var(--c1);
+	margin: 20px;
+	transition: 0.15s;
+	cursor: pointer;
+	margin-left: 0;
+}
+
+button:hover, textarea:hover {
+	background: var(--c3);
+	transition: 0.15s;
+}
+
+textarea {
+	cursor: text;
+	margin: 0;
+	margin-top: 20px;
+}
+
+.copy {
+	margin-top: 20px;
+}
+
+.add-card {
+	cursor: pointer;
+}
+
+::-webkit-scrollbar{
+	width: 5px;
+	height: 5px;
+	background: var(--c1);
+}
+
+::-webkit-scrollbar-thumb{
+	background: var(--c3);
+	border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+	background: var(--c2);
+}
+
+::-webkit-scrollbar-track{
+	background: var(--c1);
+	border-radius: 20px;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>CreditList</title>
+
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+</head>
+
+<body>
+	<div class="everything" id="everything">
+		<div class="default">
+			<div class="title">
+				<h1>Tomorrow's Schedule</h1>
+			</div>
+			<div class="my-lists">
+				<h3>My Lists</h3>
+				<button onclick="create_list();">+ New List</button> or in the main link add "#" along with your list
+				name.
+				<p id="mine"></p>
+				<script>
+					mine = document.getElementById("mine")
+					lists = localStorage.getItem("all-lists").split("&&")
+					for (item of lists) {
+						if (item !== null && item !== "null" && item !== "") {
+							mine.innerHTML = mine.innerHTML + `<button id="lists/${item}" onclick="location.replace('#${item}'); location.reload();" oncontextmenu="delete_list('lists/${item}');">${item}</button>`
+						}
+					}
+					function create_list() {
+						name = prompt("List Name:");
+						if (name !== null && name !== "null") {
+							if (name.replaceAll(" ") !== "") {
+								localStorage.setItem("all-lists", name + "&&" + localStorage.getItem("all-lists"));
+								location.replace("#" + name);
+								location.reload();
+							}
+						}
+					}
+					function delete_list(id) {
+						delete_it = confirm("Delete List?");
+						if (delete_list) {
+							new_list = [];
+							for (item of localStorage.getItem("all-lists").split("&&")) {
+								if (item !== id.replace("lists/", "")) {
+									new_list.push(item);
+								}
+							}
+							localStorage.setItem("all-lists", new_list.join("&&"));
+						}
+						location.reload();
+					}
+				</script>
+			</div>
+			<div class="purpose">
+				<h3>Purpose</h3>
+				<p>
+					CreditList was made to maintain logs and manage projects.
+				</p>
+			</div>
+			<div class="pricing">
+				<h3>Pricing</h3>
+				<p>
+					It is completely free. No plans, no ads and unlimited lists.
+				</p>
+			</div>
+			<div class="privacy">
+				<h3>Privacy and Networking</h3>
+				<p>
+					It is not possible yet.
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+	window.addEventListener("contextmenu", e => e.preventDefault());
+	if (location.href.split("#").length != 1 || location.href.split("#")[1] != "") {
+		document.getElementById("everything").innerHTML = `<div class="card-collection" id="${location.href.split("#")[1].toLowerCase()}"></div>`;
+		draw();
+	}
+</script>
+
+</html>
